@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:effmobtestapp/pages/home.dart';
 
 Future<dynamic> main() async {
@@ -24,7 +26,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page!'),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('ru'), // English
+        Locale('en'), // Russian
+      ],
       home: const Home(
         title: 'Test text for title',
       ),
@@ -94,6 +104,29 @@ class UserProfile extends StatelessWidget {
   }
 }
 
+class NavBarItemSquare extends StatelessWidget {
+  const NavBarItemSquare(
+      {super.key, required this.text, required this.ratio, this.colorFilter});
+  final String text;
+  final double ratio;
+  final ColorFilter? colorFilter;
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      text,
+      width: ratio,
+      height: ratio,
+      colorFilter: colorFilter,
+    );
+  }
+}
+
+class ApplicationColors {
+  static const Color secondaryItem = Color.fromRGBO(165, 169, 178, 1);
+  static const Color selectedColor = Color.fromRGBO(51, 100, 224, 1);
+}
+
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
 
@@ -104,6 +137,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,10 +182,84 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //  items: [
-      //   ],
-      // ),
+      bottomNavigationBar: buildBottomBar(),
     );
   }
+
+  Widget buildBottomBar() => BottomNavigationBar(
+        currentIndex: index,
+        type: BottomNavigationBarType.fixed,
+        // unselectedItemColor:,
+        selectedItemColor: ApplicationColors.selectedColor,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            activeIcon: NavBarItemSquare(
+              text: 'assets/images/home.svg',
+              ratio: 24,
+              colorFilter: ColorFilter.mode(
+                  ApplicationColors.selectedColor, BlendMode.srcIn),
+            ),
+            icon: NavBarItemSquare(
+              text: 'assets/images/home.svg',
+              ratio: 24,
+              colorFilter: ColorFilter.mode(
+                  ApplicationColors.secondaryItem, BlendMode.srcIn),
+            ),
+            label: 'Главная',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: NavBarItemSquare(
+              text: 'assets/images/search.svg',
+              ratio: 24,
+              colorFilter: ColorFilter.mode(
+                  ApplicationColors.selectedColor, BlendMode.srcIn),
+            ),
+            icon: NavBarItemSquare(
+              text: 'assets/images/search.svg',
+              ratio: 24,
+              colorFilter: ColorFilter.mode(
+                  ApplicationColors.secondaryItem, BlendMode.srcIn),
+            ),
+            label: 'Поиск',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: NavBarItemSquare(
+              text: 'assets/images/bag.svg',
+              ratio: 24,
+              colorFilter: ColorFilter.mode(
+                  ApplicationColors.selectedColor, BlendMode.srcIn),
+            ),
+            icon: NavBarItemSquare(
+              text: 'assets/images/bag.svg',
+              ratio: 24,
+              colorFilter: ColorFilter.mode(
+                  ApplicationColors.secondaryItem, BlendMode.srcIn),
+            ),
+            label: 'Корзина',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: NavBarItemSquare(
+              text: 'assets/images/profile.svg',
+              ratio: 24,
+              colorFilter: ColorFilter.mode(
+                  ApplicationColors.selectedColor, BlendMode.srcIn),
+            ),
+            icon: NavBarItemSquare(
+              text: 'assets/images/profile.svg',
+              ratio: 24,
+              colorFilter: ColorFilter.mode(
+                  ApplicationColors.secondaryItem, BlendMode.srcIn),
+            ),
+            label: 'Аккаунт',
+          ),
+        ],
+        onTap: (index) => setState(() => this.index = index),
+      );
+
+  // Widget buildPages() {
+  //   switch (index) {
+  //     case 0:
+  //     return
+  //   }
+  // }
 }
