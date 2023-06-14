@@ -1,12 +1,7 @@
+import 'package:effmobtestapp/Presentation/Screens/Routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'pages/home.dart';
-import 'pages/search.dart';
-import 'pages/cart.dart';
-import 'pages/profile.dart';
-import '../elements/topbar/topbar.dart';
-import '../elements/bottombar/bottombar.dart';
 
 Future<dynamic> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +11,7 @@ Future<dynamic> main() async {
 
   runApp(const MyApp());
 }
-
+/*
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -27,14 +22,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int currentIndex = 0;
 
-  List<Widget> pages = [
-    const HomePage(),
-    const Search(),
-    const Cart(),
-    const Profile()
-  ];
-
-  void onTap(int index) {
+  void _onTap(int index) {
     setState(() {
       currentIndex = index;
     });
@@ -49,11 +37,12 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BuildBottomBar(
         currentIndex: currentIndex,
-        onTap: onTap,
+        onTap: _onTap,
       ),
     );
   }
 }
+*/
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -61,6 +50,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Food shop test app',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
@@ -75,7 +65,8 @@ class MyApp extends StatelessWidget {
         Locale('ru'), // Russian
         Locale('en'), // English
       ],
-      home: const Home(),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator().generateRoute,
     );
   }
 }
