@@ -2,15 +2,10 @@
 
 A new Flutter project.
 
-## Getting Started
+## Краткое описание
 
-This project is a starting point for a Flutter application.
+Данный проект моей первый достаточно крупный проект и в целом первое погружение в программирование на Dart и Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+Проект является тестовым заданием для прохождения этапа отбора на вакансию разработчика.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Просьба не судить строго :)
