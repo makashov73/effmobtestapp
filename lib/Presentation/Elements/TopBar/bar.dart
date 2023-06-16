@@ -41,8 +41,9 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
         );
       default:
         return AppBar(
+          primary: true,
           title: const SafeArea(
-            minimum: EdgeInsets.only(bottom: 44),
+            minimum: EdgeInsets.only(bottom: 35),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

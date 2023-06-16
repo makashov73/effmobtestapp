@@ -11,38 +11,6 @@ Future<dynamic> main() async {
 
   runApp(const MyApp());
 }
-/*
-class Home extends StatefulWidget {
-  const Home({super.key});
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  int currentIndex = 0;
-
-  void _onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const TopBar(),
-      body: Center(
-        child: pages.elementAt(currentIndex),
-      ),
-      bottomNavigationBar: BuildBottomBar(
-        currentIndex: currentIndex,
-        onTap: _onTap,
-      ),
-    );
-  }
-}
-*/
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -54,6 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Food shop test app',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+        fontFamily: 'SF Pro',
         useMaterial3: true,
       ),
       localizationsDelegates: const [
