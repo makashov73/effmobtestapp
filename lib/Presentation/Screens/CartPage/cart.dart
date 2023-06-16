@@ -5,13 +5,10 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          'Cart content is here',
-        ),
-      ],
+    return const Scaffold(
+      body: Center(
+        child: Text('Заглушка для страницы с корзиной'),
+      ),
     );
   }
 }

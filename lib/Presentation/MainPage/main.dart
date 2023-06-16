@@ -1,7 +1,7 @@
 import 'package:effmobtestapp/BusinessLogic/MainPage/bloc/main_bloc.dart';
 import 'package:effmobtestapp/Presentation/Elements/BottomNavBar/bar.dart';
 import 'package:effmobtestapp/Presentation/Screens/Routes/routes.dart';
-import 'package:effmobtestapp/Presentation/Elements/TopBar/topbar.dart';
+import 'package:effmobtestapp/Presentation/Elements/TopBar/bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,9 +14,9 @@ class MainPage extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
-            appBar: const TopBar(),
+            appBar: const TopBar(type: 'main'),
             body: Center(child: pages.elementAt(state.tabIndex)),
-            bottomNavigationBar: const BuildBottomBar(),
+            bottomNavigationBar: const BuildBottomBar(fromListedPage: false),
           );
         });
   }

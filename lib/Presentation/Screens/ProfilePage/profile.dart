@@ -5,13 +5,10 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          'Profile content is here',
-        ),
-      ],
+    return const Scaffold(
+      body: Center(
+        child: Text('Заглушка для страницы\nпрофиля пользователя'),
+      ),
     );
   }
 }

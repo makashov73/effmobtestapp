@@ -5,20 +5,20 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-part 'search_event.dart';
-part 'search_state.dart';
+part 'dishes_event.dart';
+part 'dishes_state.dart';
 
-class SearchBloc extends Bloc<SearchEvent, SearchState> {
+class DishesBloc extends Bloc<DishesEvent, DishesState> {
   final ApiDishes apiDishes;
 
-  SearchBloc(this.apiDishes) : super(SearchLoadingState()) {
-    on<SearchLoadEvent>((event, emit) async {
-      emit(SearchLoadingState());
+  DishesBloc(this.apiDishes) : super(DishesLoadingState()) {
+    on<DishesLoadEvent>((event, emit) async {
+      emit(DishesLoadingState());
       try {
         final data = await apiDishes.getDishesList();
-        emit(SearchLoadedState(data));
+        emit(DishesLoadedState(data));
       } catch (e) {
-        emit(SearchErrorState(e.toString()));
+        emit(DishesErrorState(e.toString()));
       }
     });
   }
